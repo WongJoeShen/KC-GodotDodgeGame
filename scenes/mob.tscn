@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfgmq5q5gxm8t"]
+
+[ext_resource type="Script" path="res://scripts/mob.gd" id="1_58h27"]
+[ext_resource type="Texture2D" uid="uid://bapxjqihepuvt" path="res://Godot Dodging Game Assets/fireball.png" id="2_llkyt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqplx"]
+atlas = ExtResource("2_llkyt")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqgvh"]
+atlas = ExtResource("2_llkyt")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dekxr"]
+atlas = ExtResource("2_llkyt")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56k43"]
+atlas = ExtResource("2_llkyt")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvxyb"]
+atlas = ExtResource("2_llkyt")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g14ef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqplx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqgvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dekxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56k43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvxyb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n2fwa"]
+radius = 9.0
+height = 20.0
+
+[node name="mob" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_58h27")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g14ef")
+frame_progress = 0.711626
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, -2)
+shape = SubResource("CapsuleShape2D_n2fwa")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
